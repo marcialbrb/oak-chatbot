@@ -220,4 +220,27 @@ async def oak_command(interaction: discord.Interaction, pregunta: str): #Se agre
     historial_usuario.append({"role": "user", "content": pregunta})
     historial_usuario.append({"role": "assistant", "content": respuesta})
 
-bot.run(discord_token)
+#bot.run(discord_token)
+
+# Iniciar el bot en el servidor web (Render)
+
+from aiohttp import web
+import asyncio
+
+async def handle(request):
+    return web.Response(text="Oak está en línea y listo para responder preguntas sobre Pokémon!")
+
+async def start_web_server():
+    app = web.Application()
+    app.add_routes([web.get("/", handle)])
+    runner = web.AppRunner(app)
+    await runner.setup()
+    site = web.TCPSite(runner, "0.0.0.0", 8080)
+    await site.start()
+
+# Iniciar bot y servidor web
+async def main():
+    await start_web_server()
+    await bot.start(discord_token)
+
+asyncio.run(main())
