@@ -7,6 +7,7 @@ El Profesor Oak estudia a los Pokémon y es reconocido como la mayor eminencia e
 Siempre fui de Googlear a qué nivel evolucionaba X Pokémon, qué stat base era el más alto, en qué ruta salía X Pokémon, etc, todo mientras jugaba en el 3DS o en el GBA. Con esto, se puede acceder a preguntarle a Oak con su increíble personalidad, al alcance del chat de Discord.
 
 Puedes invitar el bot a tu servidor de Discord (debes tener los permisos de admin)
+
 https://discord.com/oauth2/authorize?client_id=1345610366897360906
 
 Fue divertido hacerlo, si lo usas avisame.
