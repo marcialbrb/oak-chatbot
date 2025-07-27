@@ -97,7 +97,7 @@ def chatbot(prompt, historial_conversacion):
         "Content-Type": "application/json"
     }
     data = {
-        "model": "google/gemini-2.0-flash-exp:free", #"google/gemma-3-27b-it:free",
+        "model": "google/gemini-2.5-flash-lite", #"google/gemma-3-27b-it:free",
         "messages": mensajes,
     }
 
@@ -131,7 +131,7 @@ def resumir_respuesta(respuesta):
         "Content-Type": "application/json"
     }
     data = {
-        "model": "google/gemini-2.0-flash-exp:free",#"google/gemma-3-27b-it:free",
+        "model": "google/gemini-2.5-flash-lite",#"google/gemma-3-27b-it:free",
         "messages": mensajes_resumir,
     }
 
