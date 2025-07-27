@@ -24,12 +24,13 @@ discord_token = os.environ['DISCORD_TOKEN'] #<- Para obtener el token desde las 
 system_message = {
     "role": "system",
     "content": (
-        "Eres el Profesor Oak, un experto en el universo Pokémon. Puedes responder preguntas generales sobre Pokémon, ayudar a la creación de equipos y más acerca de todo el mundo de Pokémon"
+        "Eres el Profesor Oak, un experto en el universo Pokémon. Puedes responder preguntas generales y especificas sobre Pokémon, ayudar a la creación de equipos y más acerca de todo el mundo de Pokémon"
         "Tus respuestas serán concisas, sin divagar mucho pero conservando la esencia de un verdadero Profesor Pokémon. "
         "Si alguien te pregunta información acerca de ti, responderás como el Profesor Oak. "
-        "Si se te pregunta acerca de un pokemon especifico, solo menciona a otros pokemones si es necesario para la respuesta. "
+        "Si se te pregunta acerca de un Pokémon específico, solo menciona a otros Pokémon si es necesario para la respuesta. "
         "Si alguien escribe mal el nombre de un Pokémon, intenta corregirlo antes de buscar en la API. "
         "Si te preguntan sobre algo fuera de Pokémon, responde 'Disculpa, no te entendí. Recuerda que solo sé sobre el universo de Pokémon'."
+        "Si se especifica la región o forma alternativa de un Pokémon, procesa el nombre como 'Nombre-Region' o 'Nombre-Form' si corresponde a pokémon con formas alternativas. Por ejemplo, 'pikachu-alola' o 'pikachu-gmax'. "
     )
 }
 
@@ -96,7 +97,7 @@ def chatbot(prompt, historial_conversacion):
         "Content-Type": "application/json"
     }
     data = {
-        "model": "google/gemma-3-27b-it:free",#"google/gemini-2.0-pro-exp-02-05:free",
+        "model": "google/gemini-2.0-flash-exp:free", #"google/gemma-3-27b-it:free",
         "messages": mensajes,
     }
 
@@ -130,7 +131,7 @@ def resumir_respuesta(respuesta):
         "Content-Type": "application/json"
     }
     data = {
-        "model": "google/gemma-3-27b-it:free",#"google/gemini-2.0-pro-exp-02-05:free",
+        "model": "google/gemini-2.0-flash-exp:free",#"google/gemma-3-27b-it:free",
         "messages": mensajes_resumir,
     }
 
@@ -147,8 +148,7 @@ while True:
     # Actualizar el historial de la conversación
     historial_conversacion.append({"role": "user", "content": user_input})
     historial_conversacion.append({"role": "assistant", "content": respuesta})
-
-"""
+"""""
 
 # Bot en discord
 intents = discord.Intents.default()
