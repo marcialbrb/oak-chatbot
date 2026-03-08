@@ -76,6 +76,7 @@ async def on_ready():
 
 
 # === Comandos ===
+MAX_HISTORIAL = 6  # Limitar a las últimas 3 interacciones (user+assistant) para no sobrecargar el prompt
 
 @bot.tree.command(name="oak", description="Preguntale al Profesor Oak sobre el mundo Pokémon.")
 async def oak_command(interaction: discord.Interaction, pregunta: str):
@@ -120,3 +121,6 @@ async def oak_command(interaction: discord.Interaction, pregunta: str):
     # Solo guardar en historial si todo salió bien
     historial.append({"role": "user", "content": pregunta})
     historial.append({"role": "assistant", "content": respuesta})
+
+    # Mantener solo los últimos MAX_HISTORIAL mensajes
+    historial_conversaciones[usuario_id] = historial[-MAX_HISTORIAL:]

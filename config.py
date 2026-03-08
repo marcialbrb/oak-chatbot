@@ -13,6 +13,7 @@ ARCHIVO_POKEMON = "pokemon_list.json"
 # === Límites ===
 MAX_SPRITES = 10
 MAX_CHARS_DISCORD = 1900
+MAX_HISTORIAL = 6
 
 # === Prompt del sistema ===
 SYSTEM_MESSAGE = {
