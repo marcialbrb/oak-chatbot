@@ -5,7 +5,7 @@ API_KEY = os.environ["API_KEY"]
 DISCORD_TOKEN = os.environ["DISCORD_TOKEN"]
 
 # === Modelo ===
-MODEL = "deepseek/deepseek-v3-0324"
+MODEL = "deepseek/deepseek-chat-v3-0324"
 
 # === Archivos locales ===
 ARCHIVO_POKEMON = "pokemon_list.json"
