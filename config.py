@@ -5,7 +5,7 @@ API_KEY = os.environ["API_KEY"]
 DISCORD_TOKEN = os.environ["DISCORD_TOKEN"]
 
 # === Modelo ===
-MODEL = "google/gemini-2.5-flash-lite"
+MODEL = "deepseek/deepseek-v3-0324"
 
 # === Archivos locales ===
 ARCHIVO_POKEMON = "pokemon_list.json"
