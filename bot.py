@@ -105,6 +105,18 @@ async def oak_command(interaction: discord.Interaction, pregunta: str):
 
     await interaction.followup.send(respuesta, files=sprites)
 
-    # Actualizar historial
+    respuesta = obtener_respuesta(pregunta, historial)
+
+    if respuesta.startswith("Error"):
+        await interaction.followup.send(respuesta)
+        return  # No actualizar historial si hubo error
+
+    if len(respuesta) >= MAX_CHARS_DISCORD:
+        respuesta = resumir_respuesta(respuesta)
+
+    sprites = _extraer_sprites(respuesta)
+    await interaction.followup.send(respuesta, files=sprites)
+
+    # Solo guardar en historial si todo salió bien
     historial.append({"role": "user", "content": pregunta})
     historial.append({"role": "assistant", "content": respuesta})

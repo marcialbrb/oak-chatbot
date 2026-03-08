@@ -26,7 +26,16 @@ def _completar(mensajes: list[dict]) -> str:
 
 def obtener_respuesta(pregunta: str, historial: list[dict]) -> str:
     """Genera una respuesta del Profesor Oak dado el historial de conversación."""
-    mensajes = [SYSTEM_MESSAGE, *historial, {"role": "user", "content": pregunta}]
+    
+    # Asegurarse de que el historial alterna user/assistant correctamente
+    historial_limpio = []
+    ultimo_rol = None
+    for mensaje in historial:
+        if mensaje["role"] != ultimo_rol:
+            historial_limpio.append(mensaje)
+            ultimo_rol = mensaje["role"]
+    
+    mensajes = [SYSTEM_MESSAGE, *historial_limpio, {"role": "user", "content": pregunta}]
     return _completar(mensajes)
 
 
